@@ -15,19 +15,19 @@ class ProductController extends Controller
         // $products = Product::where('name', 'razer2')->get();
         // $products = Product::latest()->get();
 
-        // return view('products.index', [
-        //     'products' => $products,
-        // ]);
+        return view('products.index', [
+            'products' => $products,
+        ]);
 
-        return response($products, 200); // to jest używane do zwykłych zwrotów w formacie json - więc w zasadzie to przede wszystkim to idzie do ANGULARA
+        // return response($products, 200); // to jest używane do zwykłych zwrotów w formacie json - więc w zasadzie to przede wszystkim to idzie do ANGULARA
     }
 
     public function show($id){
 
         $product = Product::findOrFail($id);
 
-        // return view('products.show', ['product' => $product]);
-        return response($product, 200);
+        return view('products.show', ['product' => $product]);
+        // return response($product, 200);
     }
 
     public function create(){
@@ -59,10 +59,10 @@ class ProductController extends Controller
         
         $product->save();
 
-        // return redirect('/')->with('msg', 'Product has been added');
-        return response()->json([
-            "message"=>"product record created"
-        ], 201);
+        return redirect('/')->with('msg', 'Product has been added');
+        // return response()->json([
+        //     "message"=>"product record created"
+        // ], 201);
     }
 
     public function destroy($id){
@@ -70,10 +70,10 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        // return redirect('/')->with('msgDel', 'Product has been deleted');
-        return response()->json([
-            "message"=>'product deleted'
-        ], 201);
+        return redirect('/')->with('msgDel', 'Product has been deleted');
+        // return response()->json([
+        //     "message"=>'product deleted'
+        // ], 201);
     }
 
     public function update($id){

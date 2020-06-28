@@ -85,5 +85,6 @@
                         <input type="submit" value="add product">
                     </form>
                 </div>
+                <a href="/">Back to main page!</a>
             </div>  
         </div> 
