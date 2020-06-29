@@ -79,7 +79,7 @@
                 </div>
                 <div class="wrapper create-product">
                     <h1>Pleaser provide the details of the product</h1>
-                    <form action="/products" method="POST">
+                    <form action="/products" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="type">Type of product: </label>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="form-group">
                             <label for="image">Input photo</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input name="image" type="file" class="form-control-file">
                         </div>
                         <input type="submit" value="add product" class="btn btn-success btn-lg active">
                     </form>

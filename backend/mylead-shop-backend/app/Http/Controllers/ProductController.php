@@ -30,7 +30,7 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(){
+    public function store(Request $request){
 
          //creating new instance of "Product record" from table
          //first part related with API -> no enough time for configuring angular part :/
@@ -66,6 +66,12 @@ class ProductController extends Controller
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
+
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $file->move('public/images/', $filename);
+        $product->image = $filename;
 
         $product->save();
 
