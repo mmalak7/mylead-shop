@@ -76,7 +76,15 @@ class ProductController extends Controller
         // ], 201);
     }
 
+    public function showUpdate($id){
+
+        $product = Product::findOrFail($id);
+
+        return view('products.update', ['product' => $product]);
+    }
+
     public function update($id){
+        
         if(Product::where('id', $id)->exists()){
             $product = Product::find($id);
             $product->type = is_null(request('type')) ? $product->type : $product->request('type');
@@ -85,14 +93,18 @@ class ProductController extends Controller
             $product->description = is_null(request('description')) ? $product->description : $product->request('description');
 
             $product->save();
-
-            return response()->json([
-                'message' => 'record updated successfully'
-            ], 201);
-        } else{
-            return response()->json([
-                'message' => 'product not found'
-            ], 404);
+        
+            return redirect('/')->with('success', 'Product has been updated!');
+        }else{
+            return redirect('/')->with('fail', 'Product has NOT been updated!');
         }
+        //     return response()->json([
+        //         'message' => 'record updated successfully'
+        //     ], 201);
+        // } else{
+        //     return response()->json([
+        //         'message' => 'product not found'
+        //     ], 404);
+        // }
     }
 }

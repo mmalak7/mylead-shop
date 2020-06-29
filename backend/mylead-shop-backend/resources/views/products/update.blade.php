@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -67,22 +68,24 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Products Details
+                    Edit product!
                 </div>
-                <div class="wrapper product-details">
-                    <h1>Information about {{$product->type}}</h1>
-                    <p class="name">Name: {{$product->name}}</p>
-                    <p class="description">Description: {{$product->description}}</p>
-                    <p class="price">Price: {{$product->price}}</p>
+                <div class="wrapper create-product">
+                    <h1>Pleaser provide the details to be updated</h1>
+                    <form action="/products/update/{{ $product->id }}" method="POST">
+                        {{ method_field('PUT') }}
+                        @csrf
+                        <label for="type">Type of product: </label>
+                        <input type="text" name="type" id="type" value='{{ $product->type }}'>
+                        <label for="name">Name of product: </label>
+                        <input type="text" name="name" id="name" value='{{ $product->name }}'>
+                        <label for="price">Price of product</label>
+                        <input type="number" name="price" id="price" value='{{ $product->price }}'>
+                        <label for="description">Description of the product</label>
+                        <input type="text" name="description" id="description" value='{{ $product->description }}'>
+                        <input type="submit" value="edit product">
+                    </form>
                 </div>
-                <form action="/products/{{ $product->id }}" method='POST'>
-                    @csrf
-                    @method('DELETE')
-                    <button>delete product</button>
-                </form>
-                <button><a href="/products/update/{{ $product->id }} "> Edit product </a></button>
-                <a href="/products">Back to main page!</a>
-            </div>
-        </div>
-    </body>
-</html>
+                <a href="/products">Back to list of products!</a>
+            </div>  
+        </div> 

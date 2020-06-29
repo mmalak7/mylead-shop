@@ -21,5 +21,8 @@ Route::get('/products', 'ProductController@index');
 Route::get('/products/create', 'ProductController@create'); //order means a lot - the first one is more important than the next routes
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{id}', 'ProductController@show');
-Route::put('/products/{id}', 'ProductController@update');
+
+Route::get('/products/update/{id}', 'ProductController@showUpdate');
+Route::put('/products/update/{id}', 'ProductController@update');
+
 Route::delete('/products/{id}', 'ProductController@destroy');
