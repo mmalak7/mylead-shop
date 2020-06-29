@@ -6,7 +6,7 @@ Implementation of recruting task for MyLead
 
 * [Laravel](https://laravel.com/)
 * [Bootstrap](https://getbootstrap.com/)
-* [PHP]
+* [PHP](https://www.php.net/manual/en/migration70.new-features.php)
 * [MySQL](https://www.mysql.com/)
 
 ### Project learning goals
