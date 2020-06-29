@@ -88,7 +88,7 @@
                 <p class="msgDel">{{ session('msgDel') }}</p>
                 <p class="msgUpdate">{{ session('msgUpdate') }}</p>
                 <p class="msgFail">{{ session('msgFail') }}</p>
-
+                
                 <a href="/products/create">Add a product</a>
 
                 <h4><a href="/products">Show all products</a></h4>

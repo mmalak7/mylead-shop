@@ -21,8 +21,10 @@ Route::get('/products', 'ProductController@index');
 Route::get('/products/create', 'ProductController@create'); //order means a lot - the first one is more important than the next routes
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{id}', 'ProductController@show');
-
 Route::put('/products/update/{id}', 'ProductController@update');
 Route::get('/products/update/{id}', 'ProductController@showUpdate');
-
 Route::delete('/products/{id}', 'ProductController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
