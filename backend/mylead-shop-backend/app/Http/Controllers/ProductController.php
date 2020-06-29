@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index(){
 
         $products = Product::all(); 
-        
+
         // $products = Product::orderBy('price', 'desc')->get();
         // $products = Product::where('name', 'razer2')->get();
         // $products = Product::latest()->get();
@@ -134,5 +134,24 @@ class ProductController extends Controller
         //         'message' => 'product not found'
         //     ], 404);
         // }
+    }
+
+    public function search(){
+        //This searching configuration is checking the spelling 1 to 1, so in case of
+        //multiple product that contains other extra letters it's not showing up 
+        error_log('before');
+        if(Product::where('name', request('q'))){
+            error_log('inside');
+            error_log(request('q'));
+
+            $products = Product::where('name', request('q'))->get(); 
+            error_log($products);
+
+            return view('products.index', [
+                'products' => $products,
+            ]);
+        } else {
+            return redirect('/products')->with('msgSearch', 'Product do not exist!');
+        }
     }
 }

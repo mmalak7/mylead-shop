@@ -88,13 +88,13 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="q"
                             placeholder="Search product"> <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </span>
                     </div>
                 </form>
 
+                <p class="msgSearch">{{ session('msgSearch') }}</p>
+                
                 @foreach($products as $product)
                     <p><a href="/products/{{ $product->id }} "> {{$product -> name}} </a>-  {{$product -> description}} - {{$product -> price}}</p>
                 @endforeach
