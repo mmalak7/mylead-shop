@@ -50,19 +50,43 @@ class ProductController extends Controller
 
     public function store(){
 
-        $product = new Product(); //creating new instance of "Pizza record" from table
-        
+         //creating new instance of "Product record" from table
+        // if(Product::where('name', request('name'))->exists()){
+        //     $product = new Product();
+
+        //     $product->type = $productOld->type;
+        //     $product->name = $productOld->name;
+        //     $product->price = request('price');
+        //     $product->description = request('description');
+
+        //     $product->save();
+
+        //     return redirect('/')->with('msg', 'New price of product has been added');
+
+        // } else {
+        //     $product = new Product();
+        //     $product->type = request('type');
+        //     $product->name = request('name');
+        //     $product->price = request('price');
+        //     $product->description = request('description');
+
+        //     $product->save();
+
+        //     return redirect('/')->with('msg', 'Product has been added');
+        // }
+        // return response()->json([
+        //     "message"=>"product record created"
+        // ], 201);
+
+        $product = new Product();
         $product->type = request('type');
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
-        
+
         $product->save();
 
         return redirect('/')->with('msg', 'Product has been added');
-        // return response()->json([
-        //     "message"=>"product record created"
-        // ], 201);
     }
 
     public function destroy($id){
