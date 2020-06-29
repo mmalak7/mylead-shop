@@ -5,9 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -16,12 +18,12 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
+                /* height: 100%; */
                 margin: 0;
             }
 
             .full-height {
-                height: 100vh;
+                height: 100%;
             }
 
             .flex-center {
@@ -59,7 +61,12 @@
             }
 
             .m-b-md {
+                margin-top: 30px;
                 margin-bottom: 30px;
+            }
+
+            .btn {
+                margin-bottom: 10px;
             }
         </style>
     </head>
@@ -88,19 +95,30 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="q"
                             placeholder="Search product"> <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default">Search</button>
+                            <button type="submit" class="btn btn-secondary btn-lg active">Search</button>
                         </span>
                     </div>
                 </form>
 
                 <p class="msgSearch">{{ session('msgSearch') }}</p>
                 
-                @foreach($products as $product)
-                    <p><a href="/products/{{ $product->id }} "> {{$product -> name}} </a>-  {{$product -> description}} - {{$product -> price}}</p>
-                @endforeach
-
-                <a href="/">Back to main page!</a>
-            </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach($products as $product)
+                        <div class="col-sm-12 col-md-3">
+                            <!-- <p><a href="/products/{{ $product->id }} "> {{$product -> name}} </a>-  {{$product -> description}} - {{$product -> price}}</p> -->
+                            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$product -> name}}</h5>
+                                    <p class="card-text">{{$product -> description}}</p>
+                                    <a href="/products/{{ $product->id }} " class="btn btn-primary">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <a href="/" class="btn btn-secondary btn-lg active">Back to main page!</a>
         </div>
     </body>
 </html>

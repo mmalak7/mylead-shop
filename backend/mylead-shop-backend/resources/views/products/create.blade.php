@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -62,6 +63,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .btn {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -74,17 +81,30 @@
                     <h1>Pleaser provide the details of the product</h1>
                     <form action="/products" method="POST">
                         @csrf
-                        <label for="type">Type of product: </label>
-                        <input type="text" name="type" id="type">
-                        <label for="name">Name of product: </label>
-                        <input type="text" name="name" id="name">
-                        <label for="price">Price of product</label>
-                        <input type="number" name="price" id="price">
-                        <label for="description">Description of the product</label>
-                        <input type="text" name="description" id="description">
-                        <input type="submit" value="add product">
+                        <div class="form-group">
+                            <label for="type">Type of product: </label>
+                            <input class="form-control" type="text" name="type" id="type">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name of product: </label>
+                            <input class="form-control" type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price of product</label>
+                            <input class="form-control" type="number" name="price" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description of the product</label>
+                            <input class="form-control" type="text" name="description" id="description">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Input photo</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <input type="submit" value="add product" class="btn btn-success btn-lg active">
                     </form>
                 </div>
-                <a href="/">Back to main page!</a>
-            </div>  
+                <a href="/" class="btn btn-secondary btn-lg active">Back to main page!</a>
         </div> 
+    <body>
+</html>

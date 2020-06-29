@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -61,6 +62,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .btn {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -83,25 +90,34 @@
                 <div class="title m-b-md">
                     Products Details
                 </div>
-
-                <div class="wrapper product-details">
-                    <h1>Information about {{$product->type}}</h1>
-                    <p class="name">Name: {{$product->name}}</p>
-                    <p class="description">Description: {{$product->description}}</p>
-                    <p class="price">Price: {{$product->price}}</p>
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: {{$product->name}}</h5>
+                            <p class="card-text">Description: {{$product->description}}</p>
+                            <p class="card-text"><big class="text-muted">Price: {{$product->price}}</big></p>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 @if (auth()->guest())
-                    <a href="/products">Back to main page!</a>
+                    <a href="/products" class="btn btn-secondary btn-lg active">Back to main page!</a>
                 @else
                     <form action="/products/{{ $product->id }}" method='POST'>
                         @csrf
                         @method('DELETE')
-                        <button>delete product</button>
+                        <button class="btn btn-danger btn-lg active">delete product</button>
                     </form>
-                    <button><a href="/products/update/{{ $product->id }} "> Edit product </a></button>
-                    <a href="/products">Back to main page!</a>    
-                @endif
-            </div>
+                    <div class="container">
+                        <a href="/products/update/{{ $product->id }} " class="btn btn-info btn-lg active"> Edit product </a>
+                    </div>
+                    <a href="/products" class="btn btn-secondary btn-lg active">Back to main page!</a>    
+                    @endif
+                </div>
         </div>
     </body>
 </html>

@@ -11,10 +11,6 @@ class ProductController extends Controller
 
         $products = Product::all(); 
 
-        // $products = Product::orderBy('price', 'desc')->get();
-        // $products = Product::where('name', 'razer2')->get();
-        // $products = Product::latest()->get();
-
         return view('products.index', [
             'products' => $products,
         ]);
@@ -34,23 +30,10 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    // public function store(){
-
-    //     $product = new Product(); //creating new instance of "Pizza record" from table
-        
-    //     $product->type = request('type');
-    //     $product->name = request('name');
-    //     $product->price = request('price');
-    //     $product->description = request('description');
-
-    //     $product->save();
-
-    //     // return redirect('/')->with('msg', 'Product has been added');
-    // }
-
     public function store(){
 
          //creating new instance of "Product record" from table
+         //first part related with API -> no enough time for configuring angular part :/
         // if(Product::where('name', request('name'))->exists()){
         //     $product = new Product();
 
@@ -139,11 +122,10 @@ class ProductController extends Controller
     public function search(){
         //This searching configuration is checking the spelling 1 to 1, so in case of
         //multiple product that contains other extra letters it's not showing up 
-        error_log('before');
+        //I guess that option search for "onChange" would be possible
+        //but need to have a look for that more carefully -> Angular/React/Vue for sure have this option
+        //look for project with beers !
         if(Product::where('name', request('q'))){
-            error_log('inside');
-            error_log(request('q'));
-
             $products = Product::where('name', request('q'))->get(); 
             error_log($products);
 

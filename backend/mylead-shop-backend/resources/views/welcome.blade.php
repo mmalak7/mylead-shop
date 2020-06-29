@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -62,6 +64,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            
         </style>
     </head>
     <body>
@@ -90,10 +93,10 @@
                 <p class="msgFail">{{ session('msgFail') }}</p>
                 
                 @if (auth()->guest())
-                    <h4><a href="/products">Show all products</a></h4>
+                    <a href="/products" class="btn btn-secondary btn-lg active">Show all products</a>
                 @else
-                    <a href="/products/create">Add a product</a>
-                    <h4><a href="/products">Show all products</a></h4>
+                    <a href="/products/create" class="btn btn-primary btn-lg active">Add a product</a>
+                    <a href="/products" class="btn btn-secondary btn-lg active">Show all products</a>
                 @endif
 
             </div>
