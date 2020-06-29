@@ -75,13 +75,17 @@
                     <p class="description">Description: {{$product->description}}</p>
                     <p class="price">Price: {{$product->price}}</p>
                 </div>
-                <form action="/products/{{ $product->id }}" method='POST'>
-                    @csrf
-                    @method('DELETE')
-                    <button>delete product</button>
-                </form>
-                <button><a href="/products/update/{{ $product->id }} "> Edit product </a></button>
-                <a href="/products">Back to main page!</a>
+                @if (auth()->guest())
+                    <a href="/products">Back to main page!</a>
+                @else
+                    <form action="/products/{{ $product->id }}" method='POST'>
+                        @csrf
+                        @method('DELETE')
+                        <button>delete product</button>
+                    </form>
+                    <button><a href="/products/update/{{ $product->id }} "> Edit product </a></button>
+                    <a href="/products">Back to main page!</a>    
+                @endif
             </div>
         </div>
     </body>

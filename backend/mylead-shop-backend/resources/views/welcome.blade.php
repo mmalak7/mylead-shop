@@ -89,9 +89,13 @@
                 <p class="msgUpdate">{{ session('msgUpdate') }}</p>
                 <p class="msgFail">{{ session('msgFail') }}</p>
                 
-                <a href="/products/create">Add a product</a>
+                @if (auth()->guest())
+                    <h4><a href="/products">Show all products</a></h4>
+                @else
+                    <a href="/products/create">Add a product</a>
+                    <h4><a href="/products">Show all products</a></h4>
+                @endif
 
-                <h4><a href="/products">Show all products</a></h4>
             </div>
         </div>
     </body>
