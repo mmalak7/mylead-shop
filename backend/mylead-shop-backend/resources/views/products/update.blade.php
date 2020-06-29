@@ -71,7 +71,7 @@
                     Edit product!
                 </div>
                 <div class="wrapper create-product">
-                    <h1>Pleaser provide the details to be updated</h1>
+                    <h1>Please provide the details to be updated</h1>
                     <form action="/products/update/{{ $product->id }}" method="POST">
                         {{ method_field('PUT') }}
                         @csrf
@@ -83,7 +83,7 @@
                         <input type="number" name="price" id="price" value='{{ $product->price }}'>
                         <label for="description">Description of the product</label>
                         <input type="text" name="description" id="description" value='{{ $product->description }}'>
-                        <input type="submit" value="edit product">
+                        <input type="submit" value="Update">
                     </form>
                 </div>
                 <a href="/products">Back to list of products!</a>

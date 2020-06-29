@@ -84,19 +84,23 @@ class ProductController extends Controller
     }
 
     public function update($id){
-        
         if(Product::where('id', $id)->exists()){
             $product = Product::find($id);
-            $product->type = is_null(request('type')) ? $product->type : $product->request('type');
-            $product->name = is_null(request('name')) ? $product->name : $product->request('name');
-            $product->price = is_null(request('price')) ? $product->price : $product->request('price');
-            $product->description = is_null(request('description')) ? $product->description : $product->request('description');
+            $product->type = is_null(request('type')) ? $product->type : request('type');
+            $product->name = is_null(request('name')) ? $product->name : request('name');
+            $product->price = is_null(request('price')) ? $product->price : request('price');
+            $product->description = is_null(request('description')) ? $product->description : request('description');
 
             $product->save();
-        
-            return redirect('/')->with('success', 'Product has been updated!');
-        }else{
-            return redirect('/')->with('fail', 'Product has NOT been updated!');
+
+            // error_log($product);
+
+            return redirect('/')->with('msgUpdate', 'Product has been updated!');
+
+        } else {
+
+            return redirect('/')->with('msgFail', 'Product has NOT been updated!');
+
         }
         //     return response()->json([
         //         'message' => 'record updated successfully'

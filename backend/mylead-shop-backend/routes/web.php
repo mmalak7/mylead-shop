@@ -22,7 +22,7 @@ Route::get('/products/create', 'ProductController@create'); //order means a lot 
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{id}', 'ProductController@show');
 
-Route::get('/products/update/{id}', 'ProductController@showUpdate');
 Route::put('/products/update/{id}', 'ProductController@update');
+Route::get('/products/update/{id}', 'ProductController@showUpdate');
 
 Route::delete('/products/{id}', 'ProductController@destroy');
