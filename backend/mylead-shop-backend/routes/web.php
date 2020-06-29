@@ -18,13 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/products', 'ProductController@index');
-Route::get('/products/create', 'ProductController@create'); //order means a lot - the first one is more important than the next routes
-Route::post('/products', 'ProductController@store');
+Route::get('/products/create', 'ProductController@create')->middleware('auth'); //order means a lot - the first one is more important than the next routes
+Route::post('/products', 'ProductController@store')->middleware('auth');;
 Route::get('/products/{id}', 'ProductController@show');
-Route::put('/products/update/{id}', 'ProductController@update');
-Route::get('/products/update/{id}', 'ProductController@showUpdate');
-Route::delete('/products/{id}', 'ProductController@destroy');
+Route::put('/products/update/{id}', 'ProductController@update')->middleware('auth');;
+Route::get('/products/update/{id}', 'ProductController@showUpdate')->middleware('auth');;
+Route::delete('/products/{id}', 'ProductController@destroy')->middleware('auth');;
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');
