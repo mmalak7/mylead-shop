@@ -25,6 +25,8 @@ Route::put('/products/update/{id}', 'ProductController@update')->middleware('aut
 Route::get('/products/update/{id}', 'ProductController@showUpdate')->middleware('auth');;
 Route::delete('/products/{id}', 'ProductController@destroy')->middleware('auth');;
 
+Route::any('/search', 'ProductController@search');
+
 Auth::routes([
     'register' => false,
 ]);

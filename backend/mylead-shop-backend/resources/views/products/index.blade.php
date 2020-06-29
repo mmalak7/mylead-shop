@@ -65,10 +65,35 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
             <div class="content">
                 <div class="title m-b-md">
                     Products Available
                 </div>
+
+                <form action="/search" method="POST" role="search">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q"
+                            placeholder="Search product"> <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
 
                 @foreach($products as $product)
                     <p><a href="/products/{{ $product->id }} "> {{$product -> name}} </a>-  {{$product -> description}} - {{$product -> price}}</p>

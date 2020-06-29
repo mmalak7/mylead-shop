@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index(){
 
         $products = Product::all(); 
-
+        
         // $products = Product::orderBy('price', 'desc')->get();
         // $products = Product::where('name', 'razer2')->get();
         // $products = Product::latest()->get();
